@@ -1,0 +1,34 @@
+# Starter pipeline
+
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+    
+pool:
+  vmImage: 'ubuntu-latest'
+
+name: 1.$(BuildID)$(Rev:.r)
+
+steps:
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.6'
+    addToPath: true
+    architecture: 'x64'  
+    
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      pip install --upgrade azureml-sdk[cli]
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Cybertron-RG'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'python setup_pipeline.py'

@@ -1,0 +1,11 @@
+{
+   "computeType": "aci",
+   "containerResourceRequirements":
+   {
+       "cpu": 1.0,
+       "memoryInGB": 2.0
+   },
+   "authEnabled": false,
+   "sslEnabled": false,
+   "appInsightsEnabled": false
+}
