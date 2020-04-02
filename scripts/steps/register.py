@@ -31,9 +31,9 @@ if __name__ == '__main__':
     pipeline_run.upload_file("outputs/deployment/inferenceconfig.json","deployment/inferenceconfig.json")
 
     tags = {
-       "Conference":"4Dotnet"
+       "Conference":"Heijmans"
     }
 
-    model = pipeline_run.register_model(model_name='seer', model_path='outputs/',tags=tags)
+    model = pipeline_run.register_model(model_name=args.model_name, model_path='outputs/',tags=tags)
        
     print('Model registered: {} \nModel Description: {} \nModel Version: {}'.format(model.name, model.description, model.version))
