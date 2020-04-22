@@ -19,10 +19,10 @@ def printhelp():
         print ('  -m    Model name')
         print ('  -e    Experiment name')
 
-experiment_name = 'Simpsons-PT-Pipeline-DevOps-Heijmans'
+experiment_name = 'Simpsons-PT-Pipeline-DevOps'
 compute_target = 'OptimusPrime'
 script_folder = "./scripts"
-model_name = "Simpsons-PT-DevOps-Heijmans"
+model_name = "Simpsons-PT-DevOps"
 
 try:
     print('Arguments: ', sys.argv[1:])
@@ -154,7 +154,7 @@ registerModelStep = PythonScriptStep(
 pipeline = Pipeline(workspace=ws, steps=[preProcessDataStep,trainOnGpuStep,registerModelStep])
 
 published_pipeline = pipeline.publish(
-    name="Simpsons-PyTorch-Pipeline-Heijmans - Training pipeline (From DevOps)", 
+    name="Simpsons-PyTorch-Pipeline - Training pipeline (From DevOps)", 
     description="Training pipeline (From Azure DevOps)")
 
 ## Submit the pipeline to be run ##
