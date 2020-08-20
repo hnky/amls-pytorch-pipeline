@@ -78,7 +78,7 @@ print("Experiment:",experiment.name)
 
 source_dataset = DataPath(
     datastore=ds, 
-    path_on_datastore="simpsonslego-v2")
+    path_on_datastore="simpsonslego-v3")
 
 source_dataset_param = (PipelineParameter(name="source_dataset",default_value=source_dataset),
                           DataPathComputeBinding())
