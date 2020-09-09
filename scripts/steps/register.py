@@ -31,7 +31,7 @@ if __name__ == '__main__':
     pipeline_run.upload_file("outputs/deployment/inferenceconfig.json","deployment/inferenceconfig.json")
 
     tags = {
-       "Conference":"Code PaLOUsa 2020"
+       "Conference":"Codecamp"
     }
 
     model = pipeline_run.register_model(model_name=args.model_name, model_path='outputs/',tags=tags)
