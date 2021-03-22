@@ -108,30 +108,26 @@ preProcessDataStep = PythonScriptStep(
 # Output location for the produced model
 model = PipelineData(name="model", datastore=ds, output_path_on_compute="model")
 
-# Estimator script params
-estimator_script_params = [
-    "--data-folder", training_data_location,
+# Define the training Environment
+aml_run_config = RunConfiguration()
+aml_run_config.target = cluster
+aml_run_config.environment = Environment.get(workspace=ws, name="AzureML-PyTorch-1.6-GPU")
+
+script_params = [
+    '--data-folder', training_data_location,
     "--output-folder", model
 ]
 
-# Create the tensorflow Estimator
-trainEstimator = PyTorch(
+trainOnGpuStep = PythonScriptStep(
+    name = 'Train Model',
+    script_name = 'steps/train.py',
     source_directory = script_folder,
+    arguments = script_params,
     compute_target = cluster,
-    entry_script = "steps/train.py", 
-    use_gpu = True,
-    framework_version='1.3'
-)
-
-# Create a pipeline step with the TensorFlow Estimator
-trainOnGpuStep = EstimatorStep(
-    name='Train Estimator Step',
-    estimator=trainEstimator,
+    runconfig = aml_run_config,
     inputs=[training_data_location],
-    outputs=[model],
-    compute_target=cluster,
-    estimator_entry_script_arguments = estimator_script_params
-) 
+    outputs=[model]
+)
 
 ## Register Model Step ##
 # Once training is complete, register.py registers the model with AML #
