@@ -27,8 +27,9 @@ if __name__ == '__main__':
     pipeline_run.upload_file("outputs/model/labels.txt",os.path.join(args.model_assets_path,"labels.txt"))
     pipeline_run.upload_file("outputs/deployment/score.py","deployment/score.py")
     pipeline_run.upload_file("outputs/deployment/myenv.yml","deployment/myenv.yml")
-    pipeline_run.upload_file("outputs/deployment/deploymentconfig.json","deployment/deploymentconfig.json")
     pipeline_run.upload_file("outputs/deployment/inferenceconfig.json","deployment/inferenceconfig.json")
+    pipeline_run.upload_file("outputs/deployment/deploymentconfig_aci.json","deployment/deploymentconfig_aci.json")
+    pipeline_run.upload_file("outputs/deployment/deploymentconfig_aks.json","deployment/deploymentconfig_aks.json")
 
     tags = {
        "Conference":"Codecamp"
