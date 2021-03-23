@@ -13,13 +13,13 @@ if __name__ == '__main__':
         '--source_path',
         type=str,
         default='',
-        help='Variant name you want to give to the model.'
+        help='Path of the source data'
     )
     parser.add_argument(
         '--destination_path',
         type=str,
         default='',
-        help='Location of trained model.'
+        help='Path of the processed data'
     )
 
     args,unparsed = parser.parse_known_args()
