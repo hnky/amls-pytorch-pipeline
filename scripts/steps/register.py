@@ -32,7 +32,7 @@ if __name__ == '__main__':
     pipeline_run.upload_file("outputs/deployment/deploymentconfig_aks.json","deployment/deploymentconfig_aks.json")
 
     tags = {
-       "Conference":"Demo"
+       "Conference":"CCC"
     }
 
     model = pipeline_run.register_model(model_name=args.model_name, model_path='outputs/',tags=tags)
